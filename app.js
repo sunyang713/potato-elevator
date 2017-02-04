@@ -95,9 +95,16 @@ var door = new Vue({
     topPosition: '400px',
     leftPosition: '1000px',
     show: true
+  },
+    methods: {
+    slideElevator: function() {
+      console.log(this.topPosition)
+      console.log(this.leftPosition)
+      this.topPosition = '200px'
+      this.leftPosition = '1000px'
+    }
   }
 })
-
 
 /***
 var elevator = new Vue ({

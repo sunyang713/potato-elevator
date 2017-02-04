@@ -29,6 +29,9 @@
         <button v-on:click="show = !show">
            potato
         </button>
+        <button v-on:click="slideElevator">
+            move up
+        </button>
         <transition name="fade">
             <div class="door">
                 <img v-bind:style="{position: myPosition, top: topPosition, left: leftPosition}" v-if="!show" src="open-door.jpg" alt="elevator">
@@ -38,18 +41,19 @@
         </transition>
     </div>
 
-    <!--<div id="elevator">
+    
+   <!--  <div id="elevator">
         <button v-on:click="slideElevator">
             move
         </button>
         <transition name="slide">
-            <img v-bind:style="{position: myPosition, top: topPosition, left: leftPosition}" class="corgi" src="vator-corgi.png" alt="corgi">
+            <img v-bind:style="{position: myPosition, top: topPosition, left: leftPosition}" src="closed-door.jpg" alt="elevator">
         </transition>   
     </div -->
     <div id="corgi-mount-point">
     </div>
 
-   
+   -->
 
 
     <!-- Scripts
