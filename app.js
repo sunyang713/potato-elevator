@@ -19,7 +19,7 @@ const STANDBY = "STANDBY"
 const NUM_FLOORS = getRandomInt(5, 10)
 
 const STANDBY_POS = 100
-const ELEVATOR_POS = 800
+const ELEVATOR_POS = 1000
 
 /**
  * A Corgi Object.
@@ -33,26 +33,41 @@ const ELEVATOR_POS = 800
  *   show: true
  * })
  */
-function Corgi({ xpos, ypos, desiredFloor, status }) {
+function Corgi({ xpos, ypos, desiredFloor, status, show }) {
   this.xpos = xpos
   this.ypos = ypos
   this.desiredFloor = desiredFloor
   this.status = status
+  this.show = show
 }
 
 var CorgiComponent = Vue.extend({
   template: `
-    <div :style="{ left: xpos, top: ypos }" class="corgi-container">
-      <div class="corgi"></div>
-      <p>{{ desiredFloor }}</p>
+    <div :style="{ left: xpos, top: ypos }" class="corgi-container" v-on:click="enterElevator">
+      <div class="corgi" v-if="show"> </div>
+      <p v-if="show" >{{ desiredFloor }}  </p>
     </div>
   `,
   data: () => new Corgi({
     xpos: STANDBY_POS + getRandomInt(-10, 10) + 'px',
     ypos: (getRandomInt(0, NUM_FLOORS) * 100) + getRandomInt(-10, 10) + 'px',
     desiredFloor: getRandomInt(0, NUM_FLOORS),
-    status: STANDBY
-  })
+    status: STANDBY,
+    show: true
+  }),
+  methods : {
+    enterElevator: function() {
+      console.log(this.xpos)
+      console.log(this.ypos)
+      this.xpos = ELEVATOR_POS + 25 + 'px'
+      this.ypos = '500px'
+      setTimeout(() => {
+        this.show = false
+        console.log('hi')
+      }, 1000)
+      // this.show = false
+    }
+  }
 })
 
 new CorgiComponent().$mount('#corgi-mount-point')

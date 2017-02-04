@@ -27,33 +27,28 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div id="door">
         <button v-on:click="show = !show">
-           potato
+           door
         </button>
         <button v-on:click="slideElevator">
             move up
         </button>
         <transition name="fade">
             <div class="door">
-                <img v-bind:style="{position: myPosition, top: topPosition, left: leftPosition}" v-if="!show" src="open-door.jpg" alt="elevator">
-                <img v-bind:style="{position: myPosition, top: topPosition, left: leftPosition}" v-if="show" src="closed-door.jpg" alt="elevator">
-                <img v-bind:style="{position: myPosition, top: topPosition, left: leftPosition}" v-if="!show" src="vator-corgi.png" alt="corgi">
+                <img v-bind:style="{position: myPosition, top: topPosition, left: leftPosition}" v-if="!show" src="open-door.jpg" alt="elevator"   width = "150" height="200">
+                <img v-bind:style="{position: myPosition, top: topPosition, left: leftPosition}" v-if="show" src="closed-door.jpg" alt="elevator"  width = "150" height="200">
+                <img v-bind:style="{position: myPosition, top: topPosition, left: leftPosition}" v-if="!show" src="vator-corgi.png" alt="corgi"    width = "150" height="175">
             </div>
+            
         </transition>
     </div>
 
-    
-   <!--  <div id="elevator">
-        <button v-on:click="slideElevator">
-            move
-        </button>
-        <transition name="slide">
-            <img v-bind:style="{position: myPosition, top: topPosition, left: leftPosition}" src="closed-door.jpg" alt="elevator">
-        </transition>   
-    </div -->
     <div id="corgi-mount-point">
     </div>
 
-   -->
+    <audio src="The Final Countdown.mp3" autoplay>
+            Your browser does not support the <code>audio</code> element.
+    </audio>
+
 
 
     <!-- Scripts

@@ -15,10 +15,6 @@ h4 {
 	font-size: 25px;
 }
 
-img {
-  width: 150px;
-  height: 200px;
-}
 
 button {
    text-align: center;
@@ -79,7 +75,8 @@ button {
   background-size: contain;
   background-repeat: no-repeat;
 	border-color: black;
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 150px;
 	color: #B78654;
+	cursor: pointer;
 }
