@@ -1,1 +1,66 @@
 /* corgi */
+
+
+body {
+	background-color:  #B19CD9;
+	font-family: "Porkys";
+	text-align: center;
+}
+
+h1 {
+	font-size: 40px;
+}
+
+h4 {
+	font-size: 25px;
+}
+
+img {
+  width: 150px;
+  height: 200px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1.0s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0
+}
+
+.slide-enter-active {
+  transition: all 3s ease;
+}
+
+.slide-enter {
+  transform: translateY(200px);
+  opacity: 1;
+}
+
+.bounce-enter-active {
+  animation: bounce-in 3s;
+}
+.bounce-leave-active {
+  animation: bounce-out 3s;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes bounce-out {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(0);
+  }
+}

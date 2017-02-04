@@ -60,9 +60,35 @@ var store = {
 }
 
 
-var app = new Vue({
-  el: '#app',
+var door = new Vue({
+  el: '#door',
   data: {
-    sharedState: store.state
+    myPosition: 'absolute',
+    topPosition: '400px',
+    leftPosition: '1000px',
+    show: true
   }
 })
+
+
+/***
+var elevator = new Vue ({
+  el: '#elevator',
+  data: {
+    myPosition: 'absolute',
+    topPosition: '400px',
+    leftPosition: '1000px',
+  },
+  
+  methods: {
+    slideElevator: function() {
+      console.log(this.topPosition)
+      console.log(this.leftPosition)
+      this.topPosition = '200px'
+      this.leftPosition = '1000px'
+    }
+  }
+})
+***/
+
+
