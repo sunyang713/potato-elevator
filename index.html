@@ -17,15 +17,39 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <!-- link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css" -->
 
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    
+
   </head>
   <body>
     <h1> The Potato-Vator </h1>
-    <h5> Enabling corgis since 2017 </h5>
+    <h4> Enabling corgi transportation since 2017 </h4>
     <!-- Application
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div id="app">
-      {{ message }}
+    <div id="door">
+        <button v-on:click="show = !show">
+           potato
+        </button>
+        <transition name="fade">
+            <div class="door">
+                <img v-bind:style="{position: myPosition, top: topPosition, left: leftPosition}" v-if="!show" src="open-door.jpg" alt="elevator">
+                <img v-bind:style="{position: myPosition, top: topPosition, left: leftPosition}" v-if="show" src="closed-door.jpg" alt="elevator">
+                <img v-bind:style="{position: myPosition, top: topPosition, left: leftPosition}" v-if="!show" src="vator-corgi.png" alt="corgi">
+            </div>
+        </transition>
     </div>
+
+    <!--<div id="elevator">
+        <button v-on:click="slideElevator">
+            move
+        </button>
+        <transition name="slide">
+            <img v-bind:style="{position: myPosition, top: topPosition, left: leftPosition}" class="corgi" src="vator-corgi.png" alt="corgi">
+        </transition>   
+    </div>
+
+   
+
 
     <!-- Scripts
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
