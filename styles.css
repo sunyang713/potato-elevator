@@ -80,3 +80,11 @@ button {
 	color: #B78654;
 	cursor: pointer;
 }
+
+.hidden-corgi {
+	opacity:0.0;
+}
+
+.hidden-corgi:hover {
+	opacity:1.0;
+}

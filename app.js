@@ -45,7 +45,7 @@ var CorgiComponent = Vue.extend({
   template: `
     <div :style="{ left: xpos, top: ypos }" class="corgi-container" v-on:click="enterElevator">
       <div class="corgi" v-if="show"> </div>
-      <p v-if="show" >{{ desiredFloor }}  </p>
+      <p v-if="show" > click me! {{ desiredFloor }}  </p>
     </div>
   `,
   data: () => new Corgi({
