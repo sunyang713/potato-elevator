@@ -64,3 +64,17 @@ img {
     transform: scale(0);
   }
 }
+
+.corgi-container {
+	position: absolute;
+}
+
+.corgi {
+	background-image: url("right-corgi.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+	border-color: black;
+	width: 100px;
+	height: 100px;
+	color: #B78654;
+}

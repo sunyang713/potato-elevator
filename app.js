@@ -1,9 +1,25 @@
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const CORGI_STATUS = {
+  ENTERING: "ENTERING",
+  INSIDE: "INSIDE",
+  EXITING: "EXITING",
+  STANDBY: "STANDBY"
+}
+
 const ENTERING = "ENTERING"
 const INSIDE = "INSIDE"
 const EXITING = "EXITING"
 const STANDBY = "STANDBY"
+const NUM_FLOORS = getRandomInt(5, 10)
 
-
+const STANDBY_POS = 100
+const ELEVATOR_POS = 800
 
 /**
  * A Corgi Object.
@@ -16,18 +32,30 @@ const STANDBY = "STANDBY"
  *   status: STANDBY,
  *   show: true
  * })
- *
  */
-function Corgi({ xpos, currentFloor, desiredFloor, status, show }) {
+function Corgi({ xpos, ypos, desiredFloor, status }) {
   this.xpos = xpos
-  this.currentFloor = currentFloor
+  this.ypos = ypos
   this.desiredFloor = desiredFloor
   this.status = status
-  this.show = show
 }
 
+var CorgiComponent = Vue.extend({
+  template: `
+    <div :style="{ left: xpos, top: ypos }" class="corgi-container">
+      <div class="corgi"></div>
+      <p>{{ desiredFloor }}</p>
+    </div>
+  `,
+  data: () => new Corgi({
+    xpos: STANDBY_POS + getRandomInt(-10, 10) + 'px',
+    ypos: (getRandomInt(0, NUM_FLOORS) * 100) + getRandomInt(-10, 10) + 'px',
+    desiredFloor: getRandomInt(0, NUM_FLOORS),
+    status: STANDBY
+  })
+})
 
-
+new CorgiComponent().$mount('#corgi-mount-point')
 
 var store = {
   state: {
@@ -92,3 +120,18 @@ var elevator = new Vue ({
 ***/
 
 
+// var app = new Vue({
+//   el: '#app',
+//   data: {
+//     sharedState: store.state
+//   },
+//   components: {
+//     'corgi': new CorgiComponent(new Corgi({
+//       xpos: 0,
+//       currentFloor: 0,
+//       desiredFloor: 3,
+//       status: STANDBY,
+//       show: true
+//     }))
+//   }
+// })
