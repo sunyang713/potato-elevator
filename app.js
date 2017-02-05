@@ -21,18 +21,8 @@ const NUM_FLOORS = getRandomInt(5, 10)
 const STANDBY_POS = 100
 const ELEVATOR_POS = 1000
 
-/**
- * A Corgi Object.
- *
- * Example:
- * var xiaolong = new Corgi({
- *   xpos: 0,
- *   currentFloor: 0,
- *   desiredFloor: 3,
- *   status: STANDBY,
- *   show: true
- * })
- */
+const RAND_FLOOR = getRandomInt(0, NUM_FLOORS) * 50 + getRandomInt(-10, 10) + 100
+
 function Corgi({ xpos, ypos, desiredFloor, status, show }) {
   this.xpos = xpos
   this.ypos = ypos
@@ -50,7 +40,7 @@ var CorgiComponent = Vue.extend({
   `,
   data: () => new Corgi({
     xpos: STANDBY_POS + getRandomInt(-10, 10) + 'px',
-    ypos: (getRandomInt(0, NUM_FLOORS) * 100) + getRandomInt(-10, 10) + 'px',
+    ypos: RAND_FLOOR + 'px',
     desiredFloor: getRandomInt(0, NUM_FLOORS),
     status: STANDBY,
     show: true
@@ -59,8 +49,8 @@ var CorgiComponent = Vue.extend({
     enterElevator: function() {
       console.log(this.xpos)
       console.log(this.ypos)
-      this.xpos = ELEVATOR_POS + 25 + 'px'
-      this.ypos = '500px'
+      this.xpos = ELEVATOR_POS + 20 + 'px'
+      this.ypos = RAND_FLOOR + 50 + 'px'
       setTimeout(() => {
         this.show = false
         console.log('hi')
@@ -72,42 +62,11 @@ var CorgiComponent = Vue.extend({
 
 new CorgiComponent().$mount('#corgi-mount-point')
 
-var store = {
-  state: {
-    elevator: {
-      doorOpen: false,
-      currentFloor: 0
-    },
-    corgis: [],
-  },
-  // TODO
-  createCorgi() {
-    // see: https://vuejs.org/v2/guide/render-function.html
-    // should initialize a corgi with the default settings
-  },
-  removeCorgi() {
-
-  },
-  setCorgiFloor(corgi, floorNumber) {
-    // TODO
-  },
-  openElevatorDoor() {
-
-  },
-  closeElevatorDoor() {
-
-  },
-  setElevatorFloor(floorNumber) {
-
-  }
-}
-
-
 var door = new Vue({
   el: '#door',
   data: {
     myPosition: 'absolute',
-    topPosition: '400px',
+    topPosition: RAND_FLOOR + 'px',
     leftPosition: '1000px',
     show: true
   },
@@ -115,45 +74,8 @@ var door = new Vue({
     slideElevator: function() {
       console.log(this.topPosition)
       console.log(this.leftPosition)
-      this.topPosition = '200px'
+      this.topPosition = RAND_FLOOR - 200 + 'px'
       this.leftPosition = '1000px'
     }
   }
 })
-
-/***
-var elevator = new Vue ({
-  el: '#elevator',
-  data: {
-    myPosition: 'absolute',
-    topPosition: '400px',
-    leftPosition: '1000px',
-  },
-  
-  methods: {
-    slideElevator: function() {
-      console.log(this.topPosition)
-      console.log(this.leftPosition)
-      this.topPosition = '200px'
-      this.leftPosition = '1000px'
-    }
-  }
-})
-***/
-
-
-// var app = new Vue({
-//   el: '#app',
-//   data: {
-//     sharedState: store.state
-//   },
-//   components: {
-//     'corgi': new CorgiComponent(new Corgi({
-//       xpos: 0,
-//       currentFloor: 0,
-//       desiredFloor: 3,
-//       status: STANDBY,
-//       show: true
-//     }))
-//   }
-// })
